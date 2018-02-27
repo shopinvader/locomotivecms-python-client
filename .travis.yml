@@ -1,0 +1,14 @@
+language: python
+sudo: true
+python:
+- 2.7
+deploy:
+  provider: pypi
+  user: akretion
+  distributions: sdist bdist_wheel
+  on:
+    tags: true
+  password:
+    secure: BReJB0dEdGdTPnKHE6WVvZ9AuJCmq3Tc89DWTrAS1rOcrNU+oJ+rfjVG//Kc1isZjvq+kiBfj6IUO9OP1Y1krDSjAzRGQJa/ex0Yjh302PuoUvPASoyGWBXm2w6ZvzhZhBmGW4dSTeNg9UyUQHQQl0W00hOMcH1WI7kgJevntM0=
+notifications:
+  email: false
