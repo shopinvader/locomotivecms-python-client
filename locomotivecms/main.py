@@ -78,8 +78,6 @@ class LocomotiveClient(object):
         self.email = email
         self.handle = handle
         self.url = url + '/locomotive/api/v3'
-
-    def auth(self):
         # TODO catch error
         r = requests.post(
             self.url + '/tokens.json', {
