@@ -25,11 +25,11 @@ class LocomotiveResource(object):
         self.path = None
 
     def _path_with_slug(self, id_or_slug):
-        return self.path + '/' + id_or_slug
+        return self._path + '/' + id_or_slug
 
     def search(self, page=1, per_page=80):
         return self.call(
-            'get', self.path, {'page': page, 'per_page': per_page})
+            'get', self._path, {'page': page, 'per_page': per_page})
 
     def read(self, id_or_slug):
         return self.call('get', self._path_with_slug(id_or_slug))
@@ -38,27 +38,27 @@ class LocomotiveResource(object):
         return self.call(
             'put',
             self._path_with_slug(id_or_slug),
-            data={'content_entry': data})
+            data={self._name: data})
 
     def create(self, data):
-        return self.call('post', self.path, data={'content_entry': data})
+        return self.call('post', self._path, data={'content_entry': data})
 
     def delete(self, id_or_slug):
         return self.call('delete', self._path_with_slug(id_or_slug))
 
 
 class LocomotiveContent(LocomotiveResource):
+    _path = None
+    _name = 'content_entry'
 
     def __init__(self, client, content_type):
         super(LocomotiveContent, self).__init__(client)
-        self.path = '/content_types/%s/entries' % content_type
+        self._path = '/content_types/%s/entries' % content_type
 
 
 class LocomotiveAsset(LocomotiveResource):
-
-    def __init__(self, client):
-        super(LocomotiveAsset, self).__init__(client)
-        self.path = '/content_assets'
+    _path = '/content_assets'
+    _name = 'content_asset'
 
     def write(self, id_or_slug, data):
         return self.call(
@@ -69,6 +69,11 @@ class LocomotiveAsset(LocomotiveResource):
         return self.call(
             'post', self.path,
             files={'content_asset[source]': (data['filename'], data['file'])})
+
+
+class LocomotiveSite(LocomotiveResource):
+    _path = '/sites'
+    _name = 'site'
 
 
 class LocomotiveClient(object):
@@ -110,3 +115,6 @@ class LocomotiveClient(object):
 
     def asset(self):
         return LocomotiveAsset(self)
+
+    def site(self):
+        return LocomotiveSite(self)
