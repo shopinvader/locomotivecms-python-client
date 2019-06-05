@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from main import LocomotiveClient
+from .main import LocomotiveClient
