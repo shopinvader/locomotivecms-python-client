@@ -89,6 +89,7 @@ class LocomotiveClient(object):
                 'api_key': self.api_key,
                 'email': self.email,
                 })
+        r.raise_for_status()
         self.token = r.json()['token']
 
     def header(self):
