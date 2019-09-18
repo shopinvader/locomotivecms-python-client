@@ -2,13 +2,16 @@ language: python
 sudo: true
 python:
 - 2.7
+script:
+- echo "TODO"
 deploy:
   provider: pypi
   user: akretion
   distributions: sdist bdist_wheel
   on:
-    tags: true
+    repo: shopinvader/locomotivecms-python-client
+    branch: master
   password:
-    secure: BReJB0dEdGdTPnKHE6WVvZ9AuJCmq3Tc89DWTrAS1rOcrNU+oJ+rfjVG//Kc1isZjvq+kiBfj6IUO9OP1Y1krDSjAzRGQJa/ex0Yjh302PuoUvPASoyGWBXm2w6ZvzhZhBmGW4dSTeNg9UyUQHQQl0W00hOMcH1WI7kgJevntM0=
+    secure: ENRUn05V+GaMM5bC8wrMSbm2qgInSmU1fXcRdQpz1sVxysIQLaATcogj2JJuisUfpUogEVWeo5kcn3HuBC+7P02NnOBWGUjZzkvredbPKvl9DzDbdAHyokuMB5edItmnxGfFvaXulh6Cbv49vT9/yaYHknBxf9jaiYQQ8MtHoEx3GgsPw4J/AnAd7IIG0KFSrjt+Vixq9oPAoRakjOLSEan9uuan65As6J7tdKHbD4v252b1EStrzmlLyFlGDonzdOtBJ8745RjJTrvqKqO79emoX15HtbIUcpqTVhTDvblHwk1mCvvXzA29KtUORi1JCe7fQPkaro/AvjsYfZhv3HRJnXBPSNp1abCJjfbbZoW8NwnrjYKWzfmPxQo2WRqmEVSumJQsNi/tuSRPZcu3d8kHH/PKtWp7z2w/2qtRum3hFHCt+J2YzHoOIDV5XEHlc3pLoTB4nBwhXwJvcuC6pVyfIqCqgjJCnzMZl2O5cO+jja7PPHjvijC42NoUxLsnZ7tssSfJhYgdKhISmZ94nkFI8OqPcfcA2zxai6nhFoBiuCrpysqaLkQnWeW6USrnWlyph84H4A+3nIprzJWnNVnBELGnNk4+ScVRuenO2cnbAagb7wI3aJy5RjpZMbtkeYQBcwHx1+Re0X3O5wIvfe9iyBf0zpEehZJXF3Xf1JA=
 notifications:
   email: false
