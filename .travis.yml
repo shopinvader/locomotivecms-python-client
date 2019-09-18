@@ -9,6 +9,7 @@ deploy:
   user: akretion
   distributions: sdist bdist_wheel
   on:
+    tags: True
     repo: shopinvader/locomotivecms-python-client
     branch: master
   password:
