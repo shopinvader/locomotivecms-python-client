@@ -107,7 +107,7 @@ class LocomotiveClient(object):
             kwargs['json'] = data
             kwargs['files'] = files
         res = getattr(requests, method)(self.url + url, **kwargs)
-        if res.status_code/100 != 2:
+        if not res.ok:
             raise LocomotiveApiError(res.json(), res.status_code)
         return res.json()
 
