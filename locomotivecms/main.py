@@ -11,7 +11,7 @@ __version__ = '0.0.2'
 class LocomotiveApiError(Exception):
 
     def __init__(self, response, status_code):
-        message = response.pop('error')
+        message = response.pop('error', str(response))
         super(LocomotiveApiError, self).__init__(message)
         self.status_code = status_code
         self.extra = response
